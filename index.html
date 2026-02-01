@@ -1,92 +1,138 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Films Direct (Tests)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            text-align: center;
-            padding: 2rem;
-            background: #222;
-        }
-        .movies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            padding: 1rem;
-        }
-        .movie {
-            background: #333;
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-        video {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 0.5rem;
-        }
-        h3 {
-            margin: 0.5rem 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix Infini Test</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; background:#111; color:#fff; }
+header { position:fixed; top:0; left:0; width:100%; background:#111; padding:1rem 2rem; z-index:100; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #333; }
+header h1 { font-size:1.5rem; }
+nav a { color:#fff; text-decoration:none; margin-left:1rem; transition: color 0.3s; }
+nav a:hover { color:#e50914; }
+
+main { padding-top:5rem; }
+
+/* Sections genre */
+section { margin:2rem 0; }
+h2 { margin-left:1rem; margin-bottom:0.5rem; }
+
+/* Scroll horizontal */
+.row { display:flex; overflow-x:auto; gap:1rem; padding:0 1rem; scroll-behavior:smooth; }
+.row::-webkit-scrollbar { height:10px; }
+.row::-webkit-scrollbar-thumb { background:#444; border-radius:5px; }
+.row::-webkit-scrollbar-track { background:#222; }
+
+/* Miniatures */
+.movie { position:relative; min-width:200px; cursor:pointer; transition: transform 0.3s; border-radius:10px; flex-shrink:0; }
+.movie img { width:100%; border-radius:10px; display:block; }
+.movie:hover { transform: scale(1.1); z-index:2; }
+.movie-title { position:absolute; bottom:0; width:100%; background:rgba(0,0,0,0.7); text-align:center; padding:0.3rem; font-size:0.9rem; border-radius:0 0 10px 10px; }
+
+/* Modal pour vidéo */
+#modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; z-index:200; }
+#modal video { width:80%; max-width:900px; border-radius:10px; }
+#close { position:absolute; top:2rem; right:2rem; font-size:2rem; cursor:pointer; color:#fff; }
+
+@media(max-width:600px){
+    .movie { min-width:150px; }
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Mon Site de Films Direct (Tests)</h1>
-        <p>Vidéos publiques / libres de droits pour tester</p>
-    </header>
-    <div class="movies">
-        <div class="movie">
-            <h3>Big Buck Bunny (extrait)</h3>
-            <video controls>
-                <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-        <div class="movie">
-            <h3>Sintel (extrait)</h3>
-            <video controls>
-                <source src="https://archive.org/services/img/Sintel_720p" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-        <div class="movie">
-            <h3>Tears of Steel (extrait)</h3>
-            <video controls>
-                <source src="https://mango.blender.org/wp-content/content/download/videos/720p/mp4/tears_of_steel_720p_10s.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-        <div class="movie">
-            <h3>Sample 1 (10s)</h3>
-            <video controls>
-                <source src="https://test-videos.co.uk/vids/walkingdead/mp4/h264/720/Walking_Dead_720_10s_1MB.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-        <div class="movie">
-            <h3>Sample 2 (10s)</h3>
-            <video controls>
-                <source src="https://test-videos.co.uk/vids/forbiggerfun/mp4/h264/720/ForBiggerFun_720_10s_1MB.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-        <div class="movie">
-            <h3>Sample 3 (10s)</h3>
-            <video controls>
-                <source src="https://test-videos.co.uk/vids/forbiggerjoy/mp4/h264/720/ForBiggerJoy_720_10s_1MB.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la vidéo.
-            </video>
-        </div>
-    </div>
+
+<header>
+<h1>Netflix Infini</h1>
+<nav>
+    <a href="#animation">Animation</a>
+    <a href="#action">Action</a>
+    <a href="#comedy">Comédie</a>
+</nav>
+</header>
+
+<main>
+<section id="animation">
+<h2>Animation</h2>
+<div class="row" id="animation-row">
+    <!-- Miniatures chargées dynamiquement -->
+</div>
+</section>
+
+<section id="action">
+<h2>Action</h2>
+<div class="row" id="action-row"></div>
+</section>
+
+<section id="comedy">
+<h2>Comédie</h2>
+<div class="row" id="comedy-row"></div>
+</section>
+</main>
+
+<!-- Modal -->
+<div id="modal">
+    <span id="close">&times;</span>
+    <video controls id="modal-video"></video>
+</div>
+
+<script>
+// Liste de films par genre (URL libres pour test)
+const moviesData = {
+    animation: [
+        {title:"Big Buck Bunny", src:"https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4", img:"https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"},
+        {title:"Sintel", src:"https://archive.org/download/Sintel_720p/Sintel_720p.mp4", img:"https://upload.wikimedia.org/wikipedia/commons/7/7a/Sintel_poster.jpg"},
+        {title:"Sample Anim", src:"https://test-videos.co.uk/vids/forbiggerfun/mp4/h264/720/ForBiggerFun_720_10s_1MB.mp4", img:"https://dummyimage.com/200x300/666/fff&text=Anim+Sample"}
+    ],
+    action: [
+        {title:"Tears of Steel", src:"https://mango.blender.org/wp-content/content/download/videos/720p/mp4/tears_of_steel_720p_10s.mp4", img:"https://mango.blender.org/wp-content/content/download/videos/720p/mp4/tears_of_steel_720p_still.jpg"},
+        {title:"Sample Action", src:"https://test-videos.co.uk/vids/walkingdead/mp4/h264/720/Walking_Dead_720_10s_1MB.mp4", img:"https://dummyimage.com/200x300/444/fff&text=Action+Sample"}
+    ],
+    comedy: [
+        {title:"Sample Comedy", src:"https://test-videos.co.uk/vids/forbiggerfun/mp4/h264/720/ForBiggerFun_720_10s_1MB.mp4", img:"https://dummyimage.com/200x300/555/fff&text=Comedy+Sample"}
+    ]
+};
+
+// Fonction pour charger des films dans une row
+function loadMovies(genre,rowId){
+    const row = document.getElementById(rowId);
+    moviesData[genre].forEach(movie=>{
+        const div = document.createElement('div');
+        div.className = 'movie';
+        div.setAttribute('data-src', movie.src);
+        div.innerHTML = `<img src="${movie.img}" alt="${movie.title}">
+                         <div class="movie-title">${movie.title}</div>`;
+        row.appendChild(div);
+        div.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            modalVideo.src = movie.src;
+            modalVideo.play();
+        });
+    });
+}
+
+// Charger initialement tous les films
+loadMovies('animation','animation-row');
+loadMovies('action','action-row');
+loadMovies('comedy','comedy-row');
+
+// Scroll infini (ajoute les mêmes films à la fin quand proche de la fin)
+document.querySelectorAll('.row').forEach(row=>{
+    row.addEventListener('scroll', ()=>{
+        if(row.scrollLeft + row.clientWidth >= row.scrollWidth - 10){
+            const genre = row.id.split('-')[0];
+            loadMovies(genre,row.id);
+        }
+    });
+});
+
+// Modal
+const modal = document.getElementById('modal');
+const modalVideo = document.getElementById('modal-video');
+const close = document.getElementById('close');
+close.addEventListener('click', () => { modalVideo.pause(); modal.style.display='none'; });
+modal.addEventListener('click',(e)=>{ if(e.target===modal){ modalVideo.pause(); modal.style.display='none'; }});
+</script>
+
 </body>
 </html>
