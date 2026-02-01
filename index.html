@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films Direct (Tests)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 2rem;
+            background: #222;
+        }
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .movie {
+            background: #333;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+        h3 {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mon Site de Films Direct (Tests)</h1>
+        <p>Vidéos publiques / libres de droits pour tester</p>
+    </header>
+    <div class="movies">
+        <div class="movie">
+            <h3>Big Buck Bunny (extrait)</h3>
+            <video controls>
+                <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+        <div class="movie">
+            <h3>Sintel (extrait)</h3>
+            <video controls>
+                <source src="https://archive.org/services/img/Sintel_720p" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+        <div class="movie">
+            <h3>Tears of Steel (extrait)</h3>
+            <video controls>
+                <source src="https://mango.blender.org/wp-content/content/download/videos/720p/mp4/tears_of_steel_720p_10s.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+        <div class="movie">
+            <h3>Sample 1 (10s)</h3>
+            <video controls>
+                <source src="https://test-videos.co.uk/vids/walkingdead/mp4/h264/720/Walking_Dead_720_10s_1MB.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+        <div class="movie">
+            <h3>Sample 2 (10s)</h3>
+            <video controls>
+                <source src="https://test-videos.co.uk/vids/forbiggerfun/mp4/h264/720/ForBiggerFun_720_10s_1MB.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+        <div class="movie">
+            <h3>Sample 3 (10s)</h3>
+            <video controls>
+                <source src="https://test-videos.co.uk/vids/forbiggerjoy/mp4/h264/720/ForBiggerJoy_720_10s_1MB.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+    </div>
+</body>
+</html>
